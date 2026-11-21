@@ -1,0 +1,17 @@
+name: validate-player-pr
+on:
+  pull_request:
+    paths: ["players/**", "players-registry.json", "harness/**", "scripts/**", "spec/**"]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      # SRI must match the committed player bytes; the sandbox rules are enforced by the static scan.
+      - run: npm run validate
+      - name: Registry entries must be sandboxed community players
+        run: node -e "const r=require('./players-registry.json');if(r.players.some(p=>p.tier!=='B'||!/^sha384-/.test(p.sri)))process.exit(1)"

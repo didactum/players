@@ -1,0 +1,13 @@
+{
+  "name": "didactum-players",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Community player plugins for Didactum (PlayerPlugin v1)",
+  "license": "MIT",
+  "scripts": {
+    "validate": "node scripts/validate_player.mjs",
+    "sri": "node scripts/validate_player.mjs --update-sri",
+    "preview": "node scripts/preview.mjs"
+  }
+}

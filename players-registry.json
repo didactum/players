@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "players": [
+    {
+      "id": "minimal-slides",
+      "name": "Minimal Slides",
+      "tier": "B",
+      "path": "players/minimal-slides/index.js",
+      "sri": "sha384-9rP6NxM6QvVxg8fDScWHCwV32u7AFWaxrHpyq8XF231J0wAMVdi1jWde2O06u5SD",
+      "authors": [
+        "Didactum Core Team"
+      ],
+      "capabilities": [
+        "tts",
+        "tutor"
+      ]
+    },
+    {
+      "id": "griffin-video-stub",
+      "name": "Griffin Video (stub)",
+      "tier": "B",
+      "path": "players/griffin-video-stub/index.js",
+      "sri": "sha384-/SzPH9pqJXoTcmPYOPDbcfyAwtRqOm1lEOQetnesdBcV5ED7T17qC9ad5tYQhnJ1",
+      "authors": [
+        "Didactum Core Team"
+      ],
+      "capabilities": [
+        "realtime",
+        "tutor"
+      ]
+    }
+  ]
+}

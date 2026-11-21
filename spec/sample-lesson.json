@@ -1,0 +1,280 @@
+{
+  "schema_version": "1.0",
+  "id": "geometry.pythagorean-theorem",
+  "slug": "pythagorean-theorem",
+  "metadata": {
+    "subject": "geometry",
+    "topic": "The Pythagorean theorem",
+    "concept_slugs": [
+      "pythagorean-theorem",
+      "right-triangles"
+    ],
+    "grade_band": "6-8",
+    "language": "en",
+    "authors": [
+      "Didactum Core Team"
+    ],
+    "license": "CC-BY-4.0",
+    "never_verbatim_verified": true
+  },
+  "problem": {
+    "statement": "A right triangle has legs 7 and 24. Find the hypotenuse.",
+    "givens": [
+      "leg a = 7",
+      "leg b = 24"
+    ],
+    "unknown": "the hypotenuse c",
+    "assessment": {
+      "answer": "c = 25",
+      "answer_value": "25",
+      "rationale": "49 + 576 = 625, and the square root of 625 is 25."
+    }
+  },
+  "problem_chapter_index": 2,
+  "chapters": [
+    {
+      "id": "squares-on-sides",
+      "role": "why",
+      "title": "Squares on the sides of a triangle",
+      "duration_hint_s": 45,
+      "beats": [
+        {
+          "id": "sq-1",
+          "narration": {
+            "text": "Picture a right triangle. Now build a real square on each of its three sides. Something quietly amazing happens with the areas of those squares, and we're going to see it with our eyes, not just trust a formula.",
+            "cues": [
+              {
+                "id": "triangle",
+                "word_index": 3
+              },
+              {
+                "id": "squares",
+                "word_index": 9
+              }
+            ],
+            "pause_ms": 400
+          },
+          "visuals": [
+            {
+              "type": "geometry_figure",
+              "id": "tri",
+              "props": {
+                "shape": "right-triangle",
+                "legs": [
+                  "a",
+                  "b"
+                ],
+                "hypotenuse": "c"
+              },
+              "layout": {
+                "region": "left"
+              },
+              "reveal_cue": "triangle"
+            },
+            {
+              "type": "geometry_figure",
+              "id": "sq3",
+              "props": {
+                "shape": "squares-on-sides",
+                "areas": [
+                  "a^2",
+                  "b^2",
+                  "c^2"
+                ]
+              },
+              "layout": {
+                "region": "center",
+                "emphasis": "high"
+              },
+              "reveal_cue": "squares"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rearrange",
+      "role": "seek",
+      "title": "Rearranging four triangles",
+      "duration_hint_s": 70,
+      "beats": [
+        {
+          "id": "rear-1",
+          "narration": {
+            "text": "Take four copies of that triangle and place them inside a big square so their hypotenuses make a tilted square in the middle. Same big square, same four triangles. Now slide the triangles into the corners another way, and two smaller squares show up instead.",
+            "cues": [
+              {
+                "id": "four",
+                "word_index": 3
+              },
+              {
+                "id": "slide",
+                "word_index": 33
+              }
+            ],
+            "pause_ms": 500
+          },
+          "visuals": [
+            {
+              "type": "geometry_figure",
+              "id": "dissect-a",
+              "props": {
+                "shape": "four-triangles-tilted-square"
+              },
+              "layout": {
+                "region": "left"
+              },
+              "reveal_cue": "four"
+            },
+            {
+              "type": "geometry_figure",
+              "id": "dissect-b",
+              "props": {
+                "shape": "four-triangles-two-squares",
+                "areas": [
+                  "a^2",
+                  "b^2"
+                ]
+              },
+              "layout": {
+                "region": "right"
+              },
+              "reveal_cue": "slide"
+            }
+          ]
+        },
+        {
+          "id": "rear-2",
+          "narration": {
+            "text": "The tilted square and the two small squares fill exactly the same leftover space. So the area on the long side equals the two other areas added together. That's the whole theorem, drawn instead of declared.",
+            "cues": [
+              {
+                "id": "equal",
+                "word_index": 10
+              }
+            ]
+          },
+          "visuals": [
+            {
+              "type": "equation_steps",
+              "id": "thm",
+              "props": {
+                "steps": [
+                  "c^2 = a^2 + b^2"
+                ]
+              },
+              "layout": {
+                "region": "bottom",
+                "emphasis": "high"
+              },
+              "reveal_cue": "equal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use-it",
+      "role": "how",
+      "title": "Turning the picture into a calculation",
+      "duration_hint_s": 60,
+      "beats": [
+        {
+          "id": "use-1",
+          "narration": {
+            "text": "Let's try a different triangle, one with legs of six and eight. Square each leg, thirty six and sixty four, and add them up. Take the square root of that total and you've found the long side. Always check that the answer is longer than either leg.",
+            "cues": [
+              {
+                "id": "legs",
+                "word_index": 7
+              },
+              {
+                "id": "root",
+                "word_index": 28
+              }
+            ],
+            "pause_ms": 400
+          },
+          "visuals": [
+            {
+              "type": "equation_steps",
+              "id": "calc",
+              "props": {
+                "steps": [
+                  "6^2 + 8^2 = c^2",
+                  "36 + 64 = c^2",
+                  "c = sqrt(100)"
+                ]
+              },
+              "layout": {
+                "region": "left"
+              },
+              "reveal_cue": "legs"
+            },
+            {
+              "type": "geometry_figure",
+              "id": "tri2",
+              "props": {
+                "shape": "right-triangle",
+                "legs": [
+                  "6",
+                  "8"
+                ],
+                "hypotenuse": "c"
+              },
+              "layout": {
+                "region": "right"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "try-yours",
+      "role": "check",
+      "title": "Which side is the long one?",
+      "duration_hint_s": 30,
+      "beats": [
+        {
+          "id": "try-1",
+          "narration": {
+            "text": "Quick gut check before you calculate. In your triangle, which side do we find by adding the squares, and which one do we find by subtracting?",
+            "cues": [
+              {
+                "id": "ask",
+                "word_index": 17
+              }
+            ],
+            "pause_ms": 1500
+          },
+          "visuals": [
+            {
+              "type": "callout",
+              "id": "hyp-note",
+              "props": {
+                "text": "The hypotenuse sits opposite the right angle."
+              },
+              "layout": {
+                "region": "right"
+              }
+            }
+          ],
+          "checkin": {
+            "prompt": "In your problem the two given sides are legs. To find the hypotenuse you...",
+            "choices": [
+              "add the squares, then take the square root",
+              "subtract the squares, then take the square root",
+              "add the sides directly",
+              "multiply the legs"
+            ],
+            "hints": [
+              "Which side sits opposite the right angle?"
+            ],
+            "correct_index": 0
+          }
+        }
+      ]
+    }
+  ]
+}
