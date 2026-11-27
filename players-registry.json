@@ -5,8 +5,9 @@
       "id": "minimal-slides",
       "name": "Minimal Slides",
       "tier": "B",
+      "contractVersion": 2,
       "path": "players/minimal-slides/index.js",
-      "sri": "sha384-9rP6NxM6QvVxg8fDScWHCwV32u7AFWaxrHpyq8XF231J0wAMVdi1jWde2O06u5SD",
+      "sri": "sha384-VNBkczCY7eQAgQOXUYv+tidYaXi6TX53yAqiCea5K1oUCRTyH0DNSSVWwgmwzDge",
       "authors": [
         "Didactum Core Team"
       ],
@@ -16,11 +17,12 @@
       ]
     },
     {
-      "id": "griffin-video-stub",
-      "name": "Griffin Video (stub)",
+      "id": "live-teacher-tile-stub",
+      "name": "Live Teacher Tile (stub)",
       "tier": "B",
-      "path": "players/griffin-video-stub/index.js",
-      "sri": "sha384-/SzPH9pqJXoTcmPYOPDbcfyAwtRqOm1lEOQetnesdBcV5ED7T17qC9ad5tYQhnJ1",
+      "contractVersion": 2,
+      "path": "players/live-teacher-tile-stub/index.js",
+      "sri": "sha384-0+6rEK9WcbT3eP5vgmkC13Aw6IlA7FaRJ9hcrEA5NWgUHg7WcWec1XKDuA9BDtd/",
       "authors": [
         "Didactum Core Team"
       ],

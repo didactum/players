@@ -1,7 +1,7 @@
 # PlayerPlugin v1
 
 A **player** turns a [LessonPackage v1](lesson-package.v1.json) into a teacher: chalkboard, comic storyboard, 3D lab,
-on-device voice narrator, or a real-time video tutor (Tavus Griffin). Lessons never name a player; players never
+on-device voice narrator, or a real-time video tutor. Lessons never name a player; players never
 edit lessons. Either can be pull-requested independently.
 
 ## Module shape (browser ESM)
@@ -23,7 +23,7 @@ export function createPlayer(container, { lesson, host, capabilities }) { /* ...
 | `play()` / `pause()` | start/stop narration + visuals |
 | `seekBeat(index)` / `seekTime(ms)` | jump (flat beat index across chapters / ms from start) |
 | `setRate(0.25..4)` `setVolume(0..1)` `setMuted(bool)` `setCaptions(bool)` `setTheme('chalk'\|'white')` | presentation |
-| `interrupt(studentInput)` | barge-in: the student spoke/typed mid-beat; conversational teachers (Griffin) answer, others pause |
+| `interrupt(studentInput)` | barge-in: the student spoke/typed mid-beat; conversational teachers answer, others pause |
 | `on(event, fn)` | subscribe; returns an unsubscribe function |
 | `destroy()` | release everything (audio, WebRTC, listeners, DOM) |
 
