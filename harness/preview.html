@@ -3,28 +3,29 @@
 <select id="player"></select> <button id="load">Load</button> <button id="play">Play</button> <button id="pause">Pause</button> <button id="ask">Interrupt</button>
 <div id="stage"></div><pre id="log"></pre>
 <script type="module">
-import { createSandboxedPlayer } from "/harness/iframe_bridge.js";
+import { createSandboxedPlayerV2 } from "/harness/iframe_bridge.js";
 const log = (...a) => { document.getElementById("log").textContent += a.map((x) => typeof x === "string" ? x : JSON.stringify(x)).join(" ") + "\n"; };
 const reg = await (await fetch("/players-registry.json")).json();
 const lesson = await (await fetch("/spec/sample-lesson.json")).json();
 const sel = document.getElementById("player"); sel.innerHTML = reg.players.map((p) => `<option>${p.id}</option>`).join("");
-// A fake host so players can be exercised without any server.
+// A fake host so players can be exercised without any server (telemetry is strictly host-authoritative).
 const host = {
   tts: { synthesizeStream: async (text) => ({ durationMs: text.split(/\s+/).length * 350, wordTimings: [] }) },
   realtime: { connect: async (o) => { log("realtime.connect", o); return { remoteMediaStream: null, sendData: (d) => log("sendData", d), close: () => log("close") }; } },
   tutor: { ask: async (ctx, input) => `(stub tutor) you asked: ${input}` },
-  telemetry: { reportPlayback: async (a) => { log("telemetry", a); } },
 };
 let ctrl;
 document.getElementById("load").onclick = async () => {
   if (ctrl) await ctrl.destroy();
   const entry = reg.players.find((p) => p.id === sel.value);
   const stage = document.getElementById("stage"); stage.textContent = "";
-  ctrl = createSandboxedPlayer(stage, { pluginUrl: "/" + entry.path, sri: entry.sri, lesson, host });
-  for (const e of ["ready", "statechange", "beatchange", "checkin", "error", "complete"]) ctrl.on(e, (p) => log(e, p ?? ""));
+  ctrl = createSandboxedPlayerV2(stage, { pluginUrl: "/" + entry.path, sri: entry.sri, lesson, host });
+  for (const e of ["ready", "statechange", "beatchange", "checkin", "statechange_var", "diagnostic", "error", "complete"]) {
+    ctrl.on(e, (p) => log(e, p ?? ""));
+  }
   try { await ctrl.mount(); } catch (err) { log("mount failed:", err.message); }
 };
 document.getElementById("play").onclick = () => ctrl && ctrl.play();
 document.getElementById("pause").onclick = () => ctrl && ctrl.pause();
-document.getElementById("ask").onclick = () => ctrl && ctrl.interrupt("wait, why?");
+document.getElementById("ask").onclick = () => ctrl && ctrl.interrupt({ reason: "barge_in" });
 </script>
